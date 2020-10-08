@@ -44,11 +44,13 @@ else
     {
       removed: $removed,
       added: $added,
-      branches: $branches
+      branches: $branches,
+      date: $date
     }
   ]' \
     --arg removed "$removed" \
     --arg added "$added" \
     --arg branches "$current_branches" \
+    --arg date "$(date)" \
     >&3
 fi

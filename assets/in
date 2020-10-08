@@ -22,5 +22,6 @@ cd $destination
 jq -r '.version.branches // ""' < $payload > branches
 jq -r '.version.added // ""' < $payload > added
 jq -r '.version.removed // ""' < $payload > removed
+jq -r '.version.date // ""' < $payload > date
 
 jq '{version}' < $payload >&3
