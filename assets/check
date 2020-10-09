@@ -45,12 +45,12 @@ else
       removed: $removed,
       added: $added,
       branches: $branches,
-      date: $date
+      check_date: $check_date
     }
   ]' \
     --arg removed "$removed" \
     --arg added "$added" \
     --arg branches "$current_branches" \
-    --arg date "$(date)" \
+    --arg check_date "$(date '+%Y-%m-%d %H:%M:%S %z')" \
     >&3
 fi

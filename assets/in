@@ -22,6 +22,11 @@ cd $destination
 jq -r '.version.branches // ""' < $payload > branches
 jq -r '.version.added // ""' < $payload > added
 jq -r '.version.removed // ""' < $payload > removed
-jq -r '.version.date // ""' < $payload > date
+jq -r '.version.check_date // ""' < $payload > check_date
 
-jq '{version}' < $payload >&3
+jq -n "{
+  version: $(jq -r '.version' < $payload),
+  metadata: [
+    { name: \"check_date\", value: $( jq -R . check_date)}
+  ]
+}" >&3
