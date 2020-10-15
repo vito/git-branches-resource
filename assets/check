@@ -34,7 +34,8 @@ set_sub() {
 echo "previous: $previous_branches"
 echo "current:  $current_branches"
 
-if [ "$current_branches" = "$previous_branches" ]; then
+# $current_branches should not be empty
+if [ -z "$current_branches" ] || [ "$current_branches" = "$previous_branches" ]; then
   echo '[]' >&3
 else
   removed="$(set_sub "$previous_branches" "$current_branches")"
